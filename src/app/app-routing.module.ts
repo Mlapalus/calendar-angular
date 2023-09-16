@@ -5,10 +5,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { CalendarComponent } from './calendar/calendar/calendar.component';
 
 const routes: Routes = [
-  { path: 'account', loadChildren: () => 
+  { path: 'calendar/account', loadChildren: () => 
     import('./auth/auth.module').then(module => module.AuthModule)
   },
-  { path: '', component: CalendarComponent}
+  { path: 'calendar', component: CalendarComponent}
 ];
 
 @NgModule({
