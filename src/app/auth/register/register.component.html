@@ -21,7 +21,7 @@
           <label class="mb-1" for="email">Adresse email</label>
           <input
             formControlName = "email"
-            [class.is-invalid] = "email.invalid && email.dirty"
+            [class.is-invalid] = "email.invalid && email.touched"
             type="email"
             placeholder="Adresse email de connexion"
             name="email"
@@ -34,7 +34,7 @@
         <div>
           <label class="mb-1" for="password">Mot de passe</label>
           <input
-            [class.is-invalid] = "password.invalid && password.dirty"
+            [class.is-invalid] = "password.invalid && password.touched"
             formControlName = "password"
             type="password"
             placeholder="Votre mot de passe"
@@ -43,26 +43,28 @@
             class="mb-3 form-control"
           />
           <p class="invalid-feedback">
-            Le mot de passe est obligatoire, doit faire 8 caractères minimum et
-            contenir au moins un chiffre, 1 minuscule, 1 majuscule et 1 caractère spécial
+            Le mot de passe est obligatoire, doit faire entre 8 et 16 caractères
+            contenir au moins 1 chiffre, 1 lettre minuscule, 1 lettre majuscule et 1 caractère spécial
           </p>
         </div>
         <div>
           <label class="mb-1" for="confirmPassword">Confirmation</label>
           <input
-            formControlame = "confirmPassword"
-            [class.is-invalid] = "confirmPassword.invalid && confirmPassword.dirty"
+            formControlName = "confirmPassword"
+            [class.is-invalid] = "(confirmPassword.invalid || registerForm.hasError('confirmPassword')) && confirmPassword.touched"
             type="password"
             placeholder="Confirmez votre mot de passe"
             name="confirmPassword"
             id="confirmPassword"
             class="mb-3 form-control"
           />
-
-          <p class="invalid-feedback">
+          <p class="invalid-feedback" *ngIf="confirmPassword.hasError('required')">
+            La confirmation du mot de passe est obligatoire
+          </p>
+          <p class="invalid-feedback" *ngIf="registerForm.hasError('confirmPassword') && !confirmPassword.hasError('required')">
             La confirmation ne correspond pas au mot de passe
           </p>
         </div>
-        <button class="btn btn-success">Créer mon compte !</button>
+        <button disabled="registerForm.invalid" class="btn btn-success">Créer mon compte !</button>
       </form>
     </div>

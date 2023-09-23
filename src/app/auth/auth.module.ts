@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
@@ -9,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'inscription', component: RegisterComponent },
-  { path: 'connexion', component: LoginComponent }
+  { path: 'connexion', component: LoginComponent }, 
 ];
 
 
@@ -23,6 +22,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     HttpClientModule
-  ]
+  ],
+  providers: []
 })
 export class AuthModule { }

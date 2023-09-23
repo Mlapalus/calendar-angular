@@ -20,7 +20,7 @@ export class CalendarHeaderComponent {
   viewDateChange = new EventEmitter<Date>();
 
   @Input()
-  locale: string = 'fr';
+  locale: string = 'en';
 
   CalendarView = CalendarView;
 
